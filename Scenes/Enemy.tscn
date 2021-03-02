@@ -1,0 +1,291 @@
+[gd_scene load_steps=89 format=2]
+
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Walking/Wraith_03_Moving Forward_008.png" type="Texture" id=1]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Walking/Wraith_03_Moving Forward_002.png" type="Texture" id=2]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Walking/Wraith_03_Moving Forward_009.png" type="Texture" id=3]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Walking/Wraith_03_Moving Forward_010.png" type="Texture" id=4]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Walking/Wraith_03_Moving Forward_011.png" type="Texture" id=5]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Walking/Wraith_03_Moving Forward_007.png" type="Texture" id=6]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Walking/Wraith_03_Moving Forward_000.png" type="Texture" id=7]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Walking/Wraith_03_Moving Forward_003.png" type="Texture" id=8]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Walking/Wraith_03_Moving Forward_006.png" type="Texture" id=9]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Walking/Wraith_03_Moving Forward_001.png" type="Texture" id=10]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Walking/Wraith_03_Moving Forward_004.png" type="Texture" id=11]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Walking/Wraith_03_Moving Forward_005.png" type="Texture" id=12]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Dying/Wraith_03_Dying_011.png" type="Texture" id=13]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Attacking/Wraith_03_Attack_007.png" type="Texture" id=14]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Dying/Wraith_03_Dying_012.png" type="Texture" id=15]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Attacking/Wraith_03_Attack_004.png" type="Texture" id=16]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_010.png" type="Texture" id=17]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Attacking/Wraith_03_Attack_005.png" type="Texture" id=18]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Attacking/Wraith_03_Attack_008.png" type="Texture" id=19]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Dying/Wraith_03_Dying_002.png" type="Texture" id=20]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_007.png" type="Texture" id=21]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle/Wraith_03_Idle_011.png" type="Texture" id=22]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Attacking/Wraith_03_Attack_003.png" type="Texture" id=23]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle/Wraith_03_Idle_003.png" type="Texture" id=24]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_015.png" type="Texture" id=25]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Dying/Wraith_03_Dying_010.png" type="Texture" id=26]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Dying/Wraith_03_Dying_001.png" type="Texture" id=27]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Dying/Wraith_03_Dying_009.png" type="Texture" id=28]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Attacking/Wraith_03_Attack_006.png" type="Texture" id=29]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Attacking/Wraith_03_Attack_009.png" type="Texture" id=30]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Attacking/Wraith_03_Attack_010.png" type="Texture" id=31]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Dying/Wraith_03_Dying_013.png" type="Texture" id=32]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Dying/Wraith_03_Dying_014.png" type="Texture" id=33]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Attacking/Wraith_03_Attack_002.png" type="Texture" id=34]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Attacking/Wraith_03_Attack_011.png" type="Texture" id=35]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle/Wraith_03_Idle_001.png" type="Texture" id=36]
+[ext_resource path="res://Scripts/AI/enemy.gd" type="Script" id=37]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle/Wraith_03_Idle_007.png" type="Texture" id=38]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle/Wraith_03_Idle_009.png" type="Texture" id=39]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_008.png" type="Texture" id=40]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_012.png" type="Texture" id=41]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle/Wraith_03_Idle_005.png" type="Texture" id=42]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle/Wraith_03_Idle_000.png" type="Texture" id=43]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Dying/Wraith_03_Dying_000.png" type="Texture" id=44]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle/Wraith_03_Idle_002.png" type="Texture" id=45]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle/Wraith_03_Idle_008.png" type="Texture" id=46]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_000.png" type="Texture" id=47]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_004.png" type="Texture" id=48]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Dying/Wraith_03_Dying_004.png" type="Texture" id=49]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Dying/Wraith_03_Dying_007.png" type="Texture" id=50]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_002.png" type="Texture" id=51]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_006.png" type="Texture" id=52]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Attacking/Wraith_03_Attack_001.png" type="Texture" id=53]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_003.png" type="Texture" id=54]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Dying/Wraith_03_Dying_008.png" type="Texture" id=55]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle/Wraith_03_Idle_006.png" type="Texture" id=56]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_005.png" type="Texture" id=57]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_013.png" type="Texture" id=58]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Dying/Wraith_03_Dying_006.png" type="Texture" id=59]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle/Wraith_03_Idle_010.png" type="Texture" id=60]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Attacking/Wraith_03_Attack_000.png" type="Texture" id=61]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Dying/Wraith_03_Dying_003.png" type="Texture" id=62]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Dying/Wraith_03_Dying_005.png" type="Texture" id=63]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_001.png" type="Texture" id=64]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_009.png" type="Texture" id=65]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle/Wraith_03_Idle_004.png" type="Texture" id=66]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_011.png" type="Texture" id=67]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_014.png" type="Texture" id=68]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle Blink/Wraith_03_Idle Blinking_005.png" type="Texture" id=69]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle Blink/Wraith_03_Idle Blinking_007.png" type="Texture" id=70]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle Blink/Wraith_03_Idle Blinking_002.png" type="Texture" id=71]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_016.png" type="Texture" id=72]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Casting Spells/Wraith_03_Casting Spells_017.png" type="Texture" id=73]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle Blink/Wraith_03_Idle Blinking_006.png" type="Texture" id=74]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle Blink/Wraith_03_Idle Blinking_008.png" type="Texture" id=75]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle Blink/Wraith_03_Idle Blinking_009.png" type="Texture" id=76]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle Blink/Wraith_03_Idle Blinking_010.png" type="Texture" id=77]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle Blink/Wraith_03_Idle Blinking_001.png" type="Texture" id=78]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle Blink/Wraith_03_Idle Blinking_000.png" type="Texture" id=79]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle Blink/Wraith_03_Idle Blinking_003.png" type="Texture" id=80]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle Blink/Wraith_03_Idle Blinking_004.png" type="Texture" id=81]
+[ext_resource path="res://img/Assets/Wraith/PNG Sequences/Idle Blink/Wraith_03_Idle Blinking_011.png" type="Texture" id=82]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 43 ), ExtResource( 36 ), ExtResource( 45 ), ExtResource( 24 ), ExtResource( 66 ), ExtResource( 42 ), ExtResource( 56 ), ExtResource( 38 ), ExtResource( 46 ), ExtResource( 39 ), ExtResource( 60 ), ExtResource( 22 ), ExtResource( 79 ), ExtResource( 78 ), ExtResource( 71 ), ExtResource( 80 ), ExtResource( 81 ), ExtResource( 69 ), ExtResource( 74 ), ExtResource( 70 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 77 ), ExtResource( 82 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 44 ), ExtResource( 27 ), ExtResource( 20 ), ExtResource( 62 ), ExtResource( 49 ), ExtResource( 63 ), ExtResource( 59 ), ExtResource( 50 ), ExtResource( 55 ), ExtResource( 28 ), ExtResource( 26 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 32 ), ExtResource( 33 ) ],
+"loop": true,
+"name": "Dead",
+"speed": 18.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 10 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 47 ), ExtResource( 64 ), ExtResource( 51 ), ExtResource( 54 ), ExtResource( 48 ), ExtResource( 57 ), ExtResource( 52 ), ExtResource( 21 ), ExtResource( 40 ), ExtResource( 65 ), ExtResource( 17 ), ExtResource( 67 ), ExtResource( 41 ), ExtResource( 58 ), ExtResource( 68 ), ExtResource( 25 ), ExtResource( 72 ), ExtResource( 73 ) ],
+"loop": false,
+"name": "Casting",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 61 ), ExtResource( 53 ), ExtResource( 34 ), ExtResource( 23 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 29 ), ExtResource( 14 ), ExtResource( 19 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 35 ) ],
+"loop": true,
+"name": "Attacking",
+"speed": 22.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Attack"
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Attacking" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Casting"
+length = 1.58333
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Casting" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 17 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Dying"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Dead" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Idle"
+length = 2.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Run"
+length = 1.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Run" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+}
+
+[node name="Enemy" type="KinematicBody2D"]
+scale = Vector2( 0.22, 0.22 )
+script = ExtResource( 37 )
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Sprite" type="AnimatedSprite" parent="Body"]
+frames = SubResource( 1 )
+animation = "Run"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
+autoplay = "Idle"
+anims/Attack = SubResource( 2 )
+anims/Casting = SubResource( 3 )
+anims/Dying = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/Run = SubResource( 6 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+visible = false
+
+[node name="Hitbox_collision" type="CollisionPolygon2D" parent="Hitbox"]
+visible = false
+polygon = PoolVector2Array( -45.4205, -180.387, -27.2851, -179.495, -13.6093, -176.819, 1.25583, -168.792, 19.6885, -157.197, 41.409, -145.17, 63.9865, -132.818, 78.8516, -117.656, 92.5275, -87.034, 94.9059, -55.8173, 87.4733, -15.3843, 75.284, 9.88635, 64.8784, 20.2919, 57.1486, 26.5352, 47.3376, 30.6975, 46.2129, 32.2672, 46.3797, 35.7712, 56.8916, 38.274, 64.9006, 41.9448, 70.0731, 48.619, 71.5748, 55.7938, 70.9074, 59.4646, 68.9052, 61.3, 65.568, 62.8017, 61.8972, 63.6359, 59.0607, 62.8017, 57.8927, 62.9685, 52.0528, 73.6472, 48.8825, 76.8175, 43.8769, 77.4849, 37.7033, 74.8152, 32.0302, 70.6439, 30.1948, 74.4815, 29.3605, 82.4905, 26.3571, 92.5018, 22.6863, 100.01, 18.0144, 104.515, 14.6773, 106.184, 11.0065, 104.515, 10.1722, 100.177, 8.83736, 93.503, 8.50365, 88.9979, 7.50252, 85.8276, 6.66824, 84.6597, 3.99857, 87.8299, -1.00709, 91.6676, -6.01273, 95.839, -10.1841, 100.177, -12.5201, 102.013, -15.5235, 101.178, -17.3251, 99.6984, -17.6562, 96.5862, -17.8594, 94.1704, -23.6994, 98.0081, -38.5495, 108.019, -55.9024, 113.859, -65.58, 114.86, -68.378, 112.611, -68.4165, 108.52, -64.9125, 103.848, -42.2203, 75.1489, -41.386, 72.9798, -46.0579, 72.4792, -51.2304, 72.4792, -58.2383, 75.6495, -60.4075, 78.486, -65.58, 78.6529, -68.2496, 77.8186, -70.2519, 74.8152, -72.421, 70.9776, -72.5879, 66.973, -71.7536, 59.7983, -69.2508, 54.1252, -68.7502, 52.2898, -69.4176, 49.6201, -68.7502, 46.1162, -67.0817, 44.9482, -66.2474, 43.1128, -66.748, 40.9437, -66.2474, 37.7734, -62.7434, 35.938, -52.3984, 32.9346, -44.8899, 28.5964, -44.0557, 26.5942, -49.5619, 24.7588, -61.4086, 20.2537, -74.4233, 12.4115, -88.6059, 0.0642128, -103.456, -16.4544, -115.136, -37.8118, -117.972, -49.4917, -110.964, -57.5007, -101.621, -76.3553, -97.6161, -98.547, -94.4458, -111.729, -89.1065, -121.573, -76.4255, -137.091, -65.0794, -149.104, -54.0669, -160.45, -47.3927, -169.46, -46.7251, -174.438, -46.7253, -177.636 )
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PoolVector2Array( -41.1302, -177.909, -24.8856, -177.193, -11.2688, -173.132, -0.279773, -166.682, 18.5926, -154.737, 40.0928, -141.598, 64.6986, -128.22, 78.7932, -112.214, 92.5275, -87.034, 94.9059, -55.8173, 87.4733, -15.3843, 75.284, 9.88635, 64.8784, 20.2919, 57.1486, 26.5352, 47.3376, 30.6975, 39.3794, 35.857, 39.7378, 52.3405, 40.8128, 62.8517, 41.41, 66.674, 39.8572, 69.4212, 40.6933, 76.3491, 38.7822, 83.3964, 31.1377, 85.6658, 22.657, 80.888, 18.357, 84.4714, 13.4597, 88.4131, 10.9514, 92.8326, 7.8458, 97.6104, 2.94854, 102.627, -3.38208, 106.808, -6.36821, 107.405, -8.75712, 105.255, -9.95158, 99.8798, -9.35435, 95.3409, -9.35435, 84.8297, -29.5455, 94.8864, -35.5114, 92.6136, -37.2159, 88.3523, -80.3977, 97.1591, -88.0682, 91.4773, -83.8068, 86.0795, -74.7159, 80.3977, -72.4432, 77.8409, -54.9178, 65.6773, -58.0746, 62.0696, -63.0352, 60.0403, -73.5795, 60.5114, -78.4091, 63.0682, -83.2386, 59.9432, -82.7866, 55.0874, -82.6272, 49.8259, -80.0762, 44.2454, -76.5685, 38.665, -74.7159, 30.6818, -69.7125, 23.9965, -60.1461, 24.7937, -54.0873, 21.7643, -59.3489, 16.1839, -70.6692, 7.89298, -85.4971, -4.70283, -99.4195, -20.7192, -109.214, -38.8749, -105.87, -49.1473, -99.8973, -55.3584, -92.7306, -78.292, -88.1917, -99.0755, -81.9805, -111.259, -76.486, -121.531, -68.8415, -133.476, -57.1358, -144.465, -44.4746, -157.126, -35.3968, -168.115, -38.0246, -173.371 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
+position = Vector2( 57.1023, 24.1477 )
+enabled = true
+cast_to = Vector2( 0, 150 )
+[connection signal="area_entered" from="Hitbox" to="." method="_on_HitBox_area_entered"]
