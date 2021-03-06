@@ -1,0 +1,568 @@
+[gd_scene load_steps=135 format=2]
+
+[ext_resource path="res://Scripts/Player/Camera.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Player/States/Motion/Air/Jump.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Player/player_state_machine.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Player/player_controller.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Player/pause.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Label.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Player/States/Motion/Ground/Move.gd" type="Script" id=7]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle Blink/Minotaur_01_Idle Blinking_003.png" type="Texture" id=8]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Jump Loop/Minotaur_01_Jump Loop_001.png" type="Texture" id=9]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_003.png" type="Texture" id=10]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle/Minotaur_01_Idle_009.png" type="Texture" id=11]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_004.png" type="Texture" id=12]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_006.png" type="Texture" id=13]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle Blink/Minotaur_01_Idle Blinking_001.png" type="Texture" id=14]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_007.png" type="Texture" id=15]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_010.png" type="Texture" id=16]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle/Minotaur_01_Idle_000.png" type="Texture" id=17]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Jump Start/Minotaur_01_Jump Start_001.png" type="Texture" id=18]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle Blink/Minotaur_01_Idle Blinking_002.png" type="Texture" id=19]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_005.png" type="Texture" id=20]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_008.png" type="Texture" id=21]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_011.png" type="Texture" id=22]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle/Minotaur_01_Idle_007.png" type="Texture" id=23]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle/Minotaur_01_Idle_002.png" type="Texture" id=24]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Jump Start/Minotaur_01_Jump Start_004.png" type="Texture" id=25]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle/Minotaur_01_Idle_008.png" type="Texture" id=26]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle/Minotaur_01_Idle_010.png" type="Texture" id=27]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Jump Start/Minotaur_01_Jump Start_000.png" type="Texture" id=28]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle Blink/Minotaur_01_Idle Blinking_005.png" type="Texture" id=29]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle Blink/Minotaur_01_Idle Blinking_010.png" type="Texture" id=30]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle Blink/Minotaur_01_Idle Blinking_006.png" type="Texture" id=31]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle Blink/Minotaur_01_Idle Blinking_009.png" type="Texture" id=32]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle/Minotaur_01_Idle_005.png" type="Texture" id=33]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Jump Start/Minotaur_01_Jump Start_002.png" type="Texture" id=34]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle/Minotaur_01_Idle_003.png" type="Texture" id=35]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle Blink/Minotaur_01_Idle Blinking_008.png" type="Texture" id=36]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Jump Start/Minotaur_01_Jump Start_003.png" type="Texture" id=37]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle Blink/Minotaur_01_Idle Blinking_011.png" type="Texture" id=38]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle/Minotaur_01_Idle_004.png" type="Texture" id=39]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle/Minotaur_01_Idle_001.png" type="Texture" id=40]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle/Minotaur_01_Idle_011.png" type="Texture" id=41]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Jump Start/Minotaur_01_Jump Start_005.png" type="Texture" id=42]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle Blink/Minotaur_01_Idle Blinking_004.png" type="Texture" id=43]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Jump Loop/Minotaur_01_Jump Loop_000.png" type="Texture" id=44]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle Blink/Minotaur_01_Idle Blinking_007.png" type="Texture" id=45]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle Blink/Minotaur_01_Idle Blinking_000.png" type="Texture" id=46]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Idle/Minotaur_01_Idle_006.png" type="Texture" id=47]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_002.png" type="Texture" id=48]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_015.png" type="Texture" id=49]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_009.png" type="Texture" id=50]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_001.png" type="Texture" id=51]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_000.png" type="Texture" id=52]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_012.png" type="Texture" id=53]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Hurt/Minotaur_01_Hurt_004.png" type="Texture" id=54]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Attacking/Minotaur_01_Attacking_005.png" type="Texture" id=55]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Dying/Minotaur_01_Dying_014.png" type="Texture" id=56]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Dying/Minotaur_01_Dying_013.png" type="Texture" id=57]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Hurt/Minotaur_01_Hurt_003.png" type="Texture" id=58]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Attacking/Minotaur_01_Attacking_010.png" type="Texture" id=59]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Jump Loop/Minotaur_01_Jump Loop_005.png" type="Texture" id=60]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Dying/Minotaur_01_Dying_007.png" type="Texture" id=61]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Dying/Minotaur_01_Dying_010.png" type="Texture" id=62]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Attacking/Minotaur_01_Attacking_006.png" type="Texture" id=63]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Dying/Minotaur_01_Dying_002.png" type="Texture" id=64]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Attacking/Minotaur_01_Attacking_003.png" type="Texture" id=65]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Attacking/Minotaur_01_Attacking_000.png" type="Texture" id=66]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Dying/Minotaur_01_Dying_000.png" type="Texture" id=67]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Dying/Minotaur_01_Dying_006.png" type="Texture" id=68]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Hurt/Minotaur_01_Hurt_008.png" type="Texture" id=69]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Attacking/Minotaur_01_Attacking_008.png" type="Texture" id=70]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Attacking/Minotaur_01_Attacking_004.png" type="Texture" id=71]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Hurt/Minotaur_01_Hurt_005.png" type="Texture" id=72]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Dying/Minotaur_01_Dying_001.png" type="Texture" id=73]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Attacking/Minotaur_01_Attacking_001.png" type="Texture" id=74]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Dying/Minotaur_01_Dying_004.png" type="Texture" id=75]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Jump Loop/Minotaur_01_Jump Loop_003.png" type="Texture" id=76]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Dying/Minotaur_01_Dying_003.png" type="Texture" id=77]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Hurt/Minotaur_01_Hurt_001.png" type="Texture" id=78]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Attacking/Minotaur_01_Attacking_007.png" type="Texture" id=79]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Hurt/Minotaur_01_Hurt_002.png" type="Texture" id=80]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Dying/Minotaur_01_Dying_009.png" type="Texture" id=81]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Attacking/Minotaur_01_Attacking_011.png" type="Texture" id=82]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Hurt/Minotaur_01_Hurt_006.png" type="Texture" id=83]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Jump Loop/Minotaur_01_Jump Loop_004.png" type="Texture" id=84]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Dying/Minotaur_01_Dying_008.png" type="Texture" id=85]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Dying/Minotaur_01_Dying_012.png" type="Texture" id=86]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Hurt/Minotaur_01_Hurt_009.png" type="Texture" id=87]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Hurt/Minotaur_01_Hurt_007.png" type="Texture" id=88]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Jump Loop/Minotaur_01_Jump Loop_002.png" type="Texture" id=89]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Hurt/Minotaur_01_Hurt_000.png" type="Texture" id=90]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Attacking/Minotaur_01_Attacking_009.png" type="Texture" id=91]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Attacking/Minotaur_01_Attacking_002.png" type="Texture" id=92]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Dying/Minotaur_01_Dying_005.png" type="Texture" id=93]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Dying/Minotaur_01_Dying_011.png" type="Texture" id=94]
+[ext_resource path="res://fonts/SourceCodePro-Bold.ttf" type="DynamicFontData" id=95]
+[ext_resource path="res://Scripts/Player/States/Motion/Ground/Idle.gd" type="Script" id=97]
+[ext_resource path="res://Scripts/Player/States/Combat/Attack.gd" type="Script" id=98]
+[ext_resource path="res://Scenes/Player/Weapon.tscn" type="PackedScene" id=99]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_014.png" type="Texture" id=100]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_017.png" type="Texture" id=101]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Hurt/Minotaur_01_Hurt_010.png" type="Texture" id=102]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_013.png" type="Texture" id=103]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Walking/Minotaur_01_Walking_016.png" type="Texture" id=104]
+[ext_resource path="res://img/Assets/Minotaur/PNG Sequences/Hurt/Minotaur_01_Hurt_011.png" type="Texture" id=105]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+use_filter = true
+font_data = ExtResource( 95 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 28 ), ExtResource( 18 ), ExtResource( 34 ), ExtResource( 37 ), ExtResource( 25 ), ExtResource( 42 ), ExtResource( 44 ), ExtResource( 89 ), ExtResource( 9 ), ExtResource( 76 ), ExtResource( 84 ), ExtResource( 60 ) ],
+"loop": false,
+"name": "Jump",
+"speed": 25.0
+}, {
+"frames": [ ExtResource( 66 ), ExtResource( 74 ), ExtResource( 92 ), ExtResource( 65 ), ExtResource( 71 ), ExtResource( 55 ), ExtResource( 63 ), ExtResource( 79 ), ExtResource( 70 ), ExtResource( 91 ), ExtResource( 59 ), ExtResource( 82 ) ],
+"loop": false,
+"name": "Attack",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 52 ), ExtResource( 51 ), ExtResource( 48 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 20 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 50 ), ExtResource( 16 ), ExtResource( 22 ), ExtResource( 53 ), ExtResource( 103 ), ExtResource( 100 ), ExtResource( 49 ), ExtResource( 104 ), ExtResource( 101 ) ],
+"loop": true,
+"name": "Move",
+"speed": 25.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 40 ), ExtResource( 24 ), ExtResource( 35 ), ExtResource( 39 ), ExtResource( 33 ), ExtResource( 47 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 11 ), ExtResource( 27 ), ExtResource( 41 ), ExtResource( 46 ), ExtResource( 14 ), ExtResource( 19 ), ExtResource( 8 ), ExtResource( 43 ), ExtResource( 29 ), ExtResource( 31 ), ExtResource( 45 ), ExtResource( 36 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 38 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 67 ), ExtResource( 73 ), ExtResource( 64 ), ExtResource( 77 ), ExtResource( 75 ), ExtResource( 93 ), ExtResource( 68 ), ExtResource( 61 ), ExtResource( 85 ), ExtResource( 81 ), ExtResource( 62 ), ExtResource( 94 ), ExtResource( 86 ), ExtResource( 57 ), ExtResource( 56 ) ],
+"loop": false,
+"name": "Dead",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 90 ), ExtResource( 78 ), ExtResource( 80 ), ExtResource( 58 ), ExtResource( 54 ), ExtResource( 72 ), ExtResource( 83 ), ExtResource( 88 ), ExtResource( 69 ), ExtResource( 87 ), ExtResource( 102 ), ExtResource( 105 ) ],
+"loop": false,
+"name": "Hurt",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 42 ), ExtResource( 25 ), ExtResource( 37 ), ExtResource( 34 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 23.1052, 33.35 )
+
+[sub_resource type="Animation" id=4]
+length = 0.55
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Attack" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.8
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Dead" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 14, 14 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.733333
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Hurt" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533334, 0.6, 0.666667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 3.28571
+loop = true
+step = 0.142857
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.142857, 0.285714, 0.428571, 0.571428, 0.714285, 0.857142, 0.999999, 1.14286, 1.28571, 1.42857, 1.57143, 1.71428, 1.85714, 2, 2.14285, 2.28571, 2.42857, 2.57143, 2.71428, 2.85714, 3, 3.14285, 3.28571 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 23 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.44
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Jump" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 11 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.68
+loop = true
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Move" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6, 0.64 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Attack"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Dying"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "Hurt"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Jump"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "Move"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachine" id=28]
+states/Attack/node = SubResource( 10 )
+states/Attack/position = Vector2( 363, 69 )
+states/Dying/node = SubResource( 11 )
+states/Dying/position = Vector2( 1045, 412 )
+states/Hurt/node = SubResource( 12 )
+states/Hurt/position = Vector2( 328, 318 )
+states/Idle/node = SubResource( 13 )
+states/Idle/position = Vector2( 720, 273 )
+states/Jump/node = SubResource( 14 )
+states/Jump/position = Vector2( 1005, 176 )
+states/Move/node = SubResource( 15 )
+states/Move/position = Vector2( 754, 44 )
+transitions = [ "Idle", "Dying", SubResource( 16 ), "Idle", "Jump", SubResource( 17 ), "Move", "Jump", SubResource( 18 ), "Move", "Attack", SubResource( 19 ), "Idle", "Attack", SubResource( 20 ), "Idle", "Hurt", SubResource( 21 ), "Hurt", "Idle", SubResource( 22 ), "Attack", "Idle", SubResource( 23 ), "Jump", "Idle", SubResource( 24 ), "Jump", "Move", SubResource( 25 ), "Idle", "Move", SubResource( 26 ), "Move", "Idle", SubResource( 27 ) ]
+start_node = "Idle"
+end_node = "Dying"
+graph_offset = Vector2( 0, -30.6603 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=29]
+
+[sub_resource type="RectangleShape2D" id=30]
+extents = Vector2( 18.43, 34.7672 )
+
+[node name="Player" type="KinematicBody2D"]
+z_index = 1
+collision_mask = 14
+collision/safe_margin = 0.3
+script = ExtResource( 4 )
+
+[node name="StateNameDisplayer" type="Label" parent="."]
+margin_left = -250.0
+margin_top = -100.0
+margin_right = 250.0
+margin_bottom = -7.62939e-06
+custom_fonts/font = SubResource( 1 )
+text = "Ya yEEt"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Sprite" type="AnimatedSprite" parent="Body"]
+position = Vector2( 0, -0.125 )
+frames = SubResource( 2 )
+animation = "Move"
+frame = 17
+
+[node name="Weapon" parent="Body" instance=ExtResource( 99 )]
+visible = false
+
+[node name="HitBox" type="Area2D" parent="Body"]
+visible = false
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape2D" parent="Body/HitBox"]
+modulate = Color( 0.345098, 1, 0.0313726, 1 )
+position = Vector2( 0, 6 )
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
+anims/Attack = SubResource( 4 )
+anims/Dying = SubResource( 5 )
+anims/Hurt = SubResource( 6 )
+anims/Idle = SubResource( 7 )
+anims/Jump = SubResource( 8 )
+anims/Move = SubResource( 9 )
+
+[node name="AnimationTree" type="AnimationTree" parent="Body/AnimationPlayer"]
+tree_root = SubResource( 28 )
+anim_player = NodePath("..")
+process_mode = 0
+parameters/playback = SubResource( 29 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 6 )
+shape = SubResource( 30 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+current = true
+process_mode = 0
+limit_left = 0
+limit_top = 0
+limit_right = 2500
+limit_bottom = 2500
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 7.0
+drag_margin_left = 0.05
+drag_margin_top = 0.15
+drag_margin_right = 0.05
+drag_margin_bottom = 0.15
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
+
+[node name="Pause" type="Control" parent="CanvasLayer"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Pause"]
+anchor_bottom = 1.0
+margin_right = 1280.0
+margin_bottom = 680.0
+color = Color( 0, 0, 0, 0.705882 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Pause/ColorRect"]
+margin_left = 1091.85
+margin_top = 6.01401
+margin_right = 1994.85
+margin_bottom = 437.014
+text = "Key parts"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause"]
+margin_left = 525.0
+margin_top = 220.0
+margin_right = 752.0
+margin_bottom = 463.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="Button" parent="CanvasLayer/Pause/VBoxContainer"]
+margin_top = 75.0
+margin_right = 227.0
+margin_bottom = 95.0
+text = "Resume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main Menu" type="Button" parent="CanvasLayer/Pause/VBoxContainer"]
+margin_top = 99.0
+margin_right = 227.0
+margin_bottom = 119.0
+text = "Main Menu"
+
+[node name="Restart" type="Button" parent="CanvasLayer/Pause/VBoxContainer"]
+margin_top = 123.0
+margin_right = 227.0
+margin_bottom = 143.0
+text = "Restart"
+
+[node name="Quit" type="Button" parent="CanvasLayer/Pause/VBoxContainer"]
+margin_top = 147.0
+margin_right = 227.0
+margin_bottom = 167.0
+text = "Quit"
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 3 )
+start_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 97 )
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource( 7 )
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource( 2 )
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource( 98 )
+[connection signal="ready" from="." to="." method="_on_Player_ready"]
+[connection signal="attack_finished" from="Body/Weapon" to="StateMachine/Attack" method="_on_attack_finished"]
+[connection signal="animation_finished" from="Body/AnimationPlayer" to="StateMachine" method="_on_animation_finished"]
+[connection signal="hide" from="CanvasLayer/Pause" to="CanvasLayer/Pause" method="_on_Pause_hide"]
+[connection signal="visibility_changed" from="CanvasLayer/Pause" to="CanvasLayer/Pause" method="_on_Pause_visibility_changed"]
+[connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/Resume" to="CanvasLayer/Pause" method="_on_Resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/Main Menu" to="CanvasLayer/Pause" method="_on_Main_Menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/Restart" to="CanvasLayer/Pause" method="_on_Restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/Quit" to="CanvasLayer/Pause" method="_on_Quit_pressed"]
+[connection signal="state_changed" from="StateMachine" to="StateNameDisplayer" method="_on_StateMachine_state_changed"]
+[connection signal="state_changed" from="StateMachine" to="Body/Weapon" method="_on_StateMachine_state_changed"]
