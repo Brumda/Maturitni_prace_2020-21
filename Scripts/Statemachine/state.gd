@@ -2,6 +2,7 @@ extends Node
 
 
 
+
 var state_machine = null
 
 # warning-ignore:unused_signal
@@ -20,6 +21,7 @@ func handle_input(_event) -> void:
 
 
 func update(_delta) -> void:
+
 	pass
 
 

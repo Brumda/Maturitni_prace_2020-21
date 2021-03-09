@@ -2,6 +2,7 @@ extends Area2D
 
 
 
+
 signal attack_finished
 
 onready var animation =  $AnimationPlayer
@@ -24,17 +25,20 @@ var combo = [
 
 
 func _ready():
+
 	_change_state(States.IDLE)
 
 
 func _change_state(new_state):
 	match state:
 		States.ATTACK:
+
 			attack_input_state = AttackInputStates.LISTENING
-			ready_for_next_attack = false
+
 
 	match new_state:
 		States.IDLE:
+
 			animation.stop()
 			visible = false
 			monitoring = false
@@ -63,6 +67,7 @@ func _unhandled_input(event):
 
 func _physics_process(_delta):
 	if attack_input_state == AttackInputStates.REGISTERED and ready_for_next_attack:
+
 		attack()
 
 
@@ -72,6 +77,7 @@ func attack():
 
 func set_ready_for_next_attack():
 	ready_for_next_attack = true
+
 
 
 func set_attack_input_listening():
