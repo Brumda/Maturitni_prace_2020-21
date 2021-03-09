@@ -13,6 +13,7 @@ var is_grounded
 var is_attacking = false
 var is_jumping = false
 
+
 onready var animation = $Body/AnimationTree.get("parameters/playback")
 
 
@@ -34,8 +35,9 @@ func _physics_process(_delta):
 		if is_jumping and velocity.y >=0:
 			is_jumping = false
 		
-		
+
 		_assigned_animation()
+
 		
 		
 		if velocity.y > 1400:
@@ -45,23 +47,28 @@ func _physics_process(_delta):
 
 
 func _handle_move_input():
+
 	var move_direction = float(-int(Input.is_action_pressed("move_left")) + int(Input.is_action_pressed("move_right")))
 	velocity.x = lerp(velocity.x, max_speed * move_direction, _get_friction())
 	if move_direction != 0:
 		scale.x = move_direction
 
 
+
 func _input(event):
 	if event.is_action_pressed("jump") and is_on_floor():
 		velocity.y = max_jump_height
 		is_jumping = true
+
 		animation.travel("jump")
+
 	if is_jumping == true:
 		snap = Vector2()
 
 
 func _get_friction():
 	return 0.2 if is_on_floor() else 0.08
+
 
 
 func _assigned_animation():
@@ -75,6 +82,7 @@ func _assigned_animation():
 		anim = "Move"
 	
 	animation.travel(anim)
+
 
 
 func _on_Player_ready():
