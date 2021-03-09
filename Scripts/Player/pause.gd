@@ -24,7 +24,9 @@ func _on_Resume_pressed():
 func _on_Main_Menu_pressed():
 	pause()
 # warning-ignore:return_value_discarded
-	get_tree().change_scene("res://Scenes/MainMenu.tscn")
+
+	get_tree().change_scene("res://Scenes/User_Interface/MainMenu.tscn")
+
 
 
 func _on_Restart_pressed():

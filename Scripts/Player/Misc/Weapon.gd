@@ -1,78 +1,91 @@
 extends Area2D
 
 
+
+
 signal attack_finished
 
-export(int) var Damadge = 3
+onready var animation =  $AnimationPlayer
 
+var damage = 3
 enum States {IDLE, ATTACK}
 var state = null
+
+enum AttackInputStates { IDLE, LISTENING, REGISTERED }
+var attack_input_state = AttackInputStates.IDLE
+
 var ready_for_next_attack = false
 
-const MAX_COMBO_COUNT = 3
-
-var combo_count = 0
-
 var attack_current = {}
-var combo = [{
-		"damage": 1,
-		"animation": "Swing"
-	},
+var combo = [
 	{
-		"damage": 1,
-		"animation": "Swing"
-	},
-	{
-		"damage": 3,
-		"animation": "Swing"
-	}]
+		"damage": damage,
+		"animation": "Swing"}
+	]
 
 
 func _ready():
-# warning-ignore:return_value_discarded
-	$AnimationPlayer.connect("animation_finished", self, "_on_animation_finished")
-	
-#	self.connect("body_entered", self, "_on_body_entered")
-#	$AnimationPlayer.play(States.IDLE)
+
 	_change_state(States.IDLE)
 
 
 func _change_state(new_state):
 	match state:
 		States.ATTACK:
-#			attack_input_state = AttackInputStates.LISTENING
-			ready_for_next_attack = false
+
+			attack_input_state = AttackInputStates.LISTENING
+
 
 	match new_state:
 		States.IDLE:
-			combo_count = 0
-			$AnimationPlayer.stop()
+
+			animation.stop()
 			visible = false
 			monitoring = false
+			monitorable = false
 		
 		States.ATTACK:
-			attack_current = combo[combo_count -1]
-			$AnimationPlayer.play(attack_current["animation"])
+			attack_current = combo[0]
+			animation.play(attack_current["animation"])
 			visible = true
+			monitorable = true
 			monitoring = true
-	
+			
 	state = new_state
 
 
+func _unhandled_input(event):
+	if not state == States.ATTACK:
+		return
+		
+	if attack_input_state != AttackInputStates.LISTENING:
+		return
+	
+	if event.is_action_pressed("attack"):
+		attack_input_state = AttackInputStates.REGISTERED
+
+
 func _physics_process(_delta):
-	if ready_for_next_attack:
+	if attack_input_state == AttackInputStates.REGISTERED and ready_for_next_attack:
+
 		attack()
 
 
 func attack():
-	combo_count += 1
 	_change_state(States.ATTACK)
 
 
 func set_ready_for_next_attack():
 	ready_for_next_attack = true
 
-func _on_animation_finished(_name):
+
+
+func set_attack_input_listening():
+	attack_input_state = AttackInputStates.LISTENING
+
+
+func _on_animation_finished(_anim_name):
+
 	_change_state(States.IDLE)
 	emit_signal("attack_finished")
 
@@ -80,3 +93,9 @@ func _on_animation_finished(_name):
 func _on_StateMachine_state_changed(current_state):
 	if current_state.name == "Attack":
 		attack()
+
+
+func _on_enemy_hit(area: Area2D) -> void:
+	set_deferred("monitorable", false)
+	set_deferred("monitoring", false)
+	area.owner.take_damage(attack_current["damage"])

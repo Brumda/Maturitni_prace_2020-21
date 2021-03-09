@@ -1,7 +1,7 @@
 extends "res://Scripts/Statemachine/state.gd"
 
 
-#var velocity = Vector2()
+
 
 func get_input_direction():
 	var input_direction = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))

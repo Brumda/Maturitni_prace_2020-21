@@ -1,6 +1,7 @@
 extends "res://Scripts/Statemachine/state_machine.gd"
 
 
+
 onready var idle = $Idle
 onready var move = $Move
 onready var jump = $Jump
@@ -24,18 +25,23 @@ func _ready():
 func _change_state(state_name):
 	if not _active:
 		return
+
+	
+	
 	if state_name in ["hurt", "jump", "attack"]:
 		states_stack.push_front(states_map[state_name])
-	
-#	if state_name == "jump" and current_state == move:
-#		jump.initialize(move.max_speed)
+
+
 	._change_state(state_name)
 
 
 func _unhandled_input(event):
 	if event.is_action_pressed("attack"):
-		if current_state in ["attack", "hurt"] or !owner.is_on_floor():
+
+		if current_state.name in ["Attack", "Hurt", "Jump"] or !owner.is_on_floor() or owner.velocity.y < 0:
 			return
 		_change_state("attack")
 		return
+		
+
 	current_state.handle_input(event)

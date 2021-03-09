@@ -36,6 +36,7 @@ func _physics_process(_delta):
 			is_jumping = false
 		
 
+		
 		_assigned_animation()
 
 		
@@ -70,7 +71,6 @@ func _get_friction():
 	return 0.2 if is_on_floor() else 0.08
 
 
-
 func _assigned_animation():
 	var anim = "Idle"
 	
@@ -82,7 +82,6 @@ func _assigned_animation():
 		anim = "Move"
 	
 	animation.travel(anim)
-
 
 
 func _on_Player_ready():

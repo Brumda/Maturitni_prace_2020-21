@@ -8,15 +8,20 @@ export(NodePath) var start_state
 var states_map = {}
 var states_stack = []
 var current_state = null
+
+
 var _active = false setget set_active
 
-func _ready():
+func _ready() -> void:
 	if not start_state:
 		start_state = get_child(0).get_path()
+	
 	for child in get_children():
 		var err = child.connect("finished", self, "_change_state")
+		
 		if err:
 			printerr(err)
+
 	initialize(start_state)
 
 
@@ -31,12 +36,15 @@ func set_active(value):
 	_active = value
 	set_physics_process(value)
 	set_process_input(value)
-#	if not _active:
-#		states_stack = []
-#		current_state = null
+
+	
+	if not _active:
+		states_stack = []
+		current_state = null
 
 
-func _unhandled_input(event):
+func _unhandled_input(event: InputEvent) -> void:
+
 	current_state.handle_input(event)
 
 
@@ -48,21 +56,25 @@ func _physics_process(delta):
 func _on_animation_finished(anim_name):
 	if not _active:
 		return
+
 	current_state._on_animation_finished(anim_name)
 
 
 func _change_state(state_name):
 	if not _active:
 		return
+
 	current_state.exit()
 
 	if state_name == "previous":
 		states_stack.pop_front()
+
 	else:
 		states_stack[0] = states_map[state_name]
 
 	current_state = states_stack[0]
 	emit_signal("state_changed", current_state)
 
-	if state_name != "previous":
-		current_state.enter()
+	current_state.enter()
+
+

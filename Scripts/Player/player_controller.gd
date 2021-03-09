@@ -1,8 +1,12 @@
 extends KinematicBody2D
 
 
+
 signal direction_changed(new_direction)
 signal grounded_updated(is_grounded)
+
+
+export (float) var lives = 3.0
 
 var look_direction = 1 setget set_look_direction
 var is_grounded
@@ -24,7 +28,7 @@ func _physics_process(_delta):
 #If the player is falling for too long, the game restarts the current level
 # warning-ignore:return_value_discarded
 			get_tree().reload_current_scene()
-	
+
 func set_dead(value):
 	set_process_input(not value)
 	set_physics_process(not value)
@@ -33,11 +37,15 @@ func set_dead(value):
 
 func set_look_direction(value):
 	look_direction = value
-	scale.x *= -1
+
+	$Body.scale.x *= -1
+
 	emit_signal("direction_changed", value)
 
 
 func _on_Player_ready():
 	#You won't be able to see the mouse cursor in the game
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	$AnimationPlayer/AnimationTree.set_active(true)
+
+	$Body/AnimationPlayer/AnimationTree.set_active(true)
+

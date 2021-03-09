@@ -1,7 +1,9 @@
 extends "res://Scripts/Statemachine/state.gd"
 
 
-onready var animation = owner.get_node("AnimationPlayer/AnimationTree").get("parameters/playback")
+
+onready var animation = owner.get_node("Body/AnimationPlayer/AnimationTree").get("parameters/playback")
+
 
 
 func enter():
