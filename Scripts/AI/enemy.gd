@@ -1,24 +1,19 @@
 extends KinematicBody2D
 
 var velocity = Vector2()
-var direction = 1
-var speed = 2 * 48
 
-func _physics_process(delta):
-	velocity.x = speed * direction
+var move_direction = 1
+var speed = 2 * Global.UNIT_SIZE
+var invert = -1
+
+func _physics_process(_delta):
+	velocity.x = speed * move_direction
 	velocity.y += Global.GRAVITY
 	velocity = move_and_slide(velocity, Global.UP)
 	
-	$Sprite.play("Run")
+	$Body/AnimationPlayer.play("Run")
 	
-	if is_on_wall():
-		direction *= -1
-		$RayCast2D.position.x *= -1
-		$Sprite.flip_h = !$Sprite.flip_h
-		
-		
-	if $RayCast2D.is_colliding() == false:
-		direction *= -1
-		$RayCast2D.position.x *= -1
-		$Sprite.flip_h = !$Sprite.flip_h
-	
+	if is_on_wall() or !$RayCast2D.is_colliding() and is_on_floor():
+		move_direction *= invert
+		scale.x *= invert
+

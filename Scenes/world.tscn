@@ -1,7 +1,10 @@
-[gd_scene load_steps=23 format=2]
+with-fsm-but-still-no-enemies
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://img/Assets/Nature/Nature_environment_01.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/statestackdisplay.tscn" type="PackedScene" id=3]
+
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -239,17 +242,33 @@ cell_size = Vector2( 48, 48 )
 format = 1
 tile_data = PoolIntArray( 262159, 2, 0, 327692, 0, 0, 327693, 0, 7, 327694, 0, 0, 327701, 0, 0, 327702, 0, 3, 327703, 0, 0, 393225, 0, 0, 458760, 0, 0, 458762, 0, 0, 458776, 3, 0, 458777, 3, 1, 458778, 3, 1, 458779, 3, 2, 524295, 0, 0, 524299, 0, 0, 524305, 0, 0, 524306, 2, 0, 524312, 3, 65536, 524313, 3, 65537, 524314, 3, 65537, 524315, 3, 65538, 589830, 0, 0, 589836, 0, 0, 589841, 0, 0, 589848, 3, 131072, 589849, 3, 131073, 589850, 3, 131073, 589851, 3, 131074, 589853, 2, 0, 589859, 2, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 7, 655368, 0, 3, 655369, 0, 1, 655370, 0, 6, 655371, 0, 1, 655372, 0, 0, 655373, 0, 7, 655374, 0, 6, 655375, 0, 4, 655376, 0, 7, 655377, 0, 0, 655378, 0, 4, 655379, 0, 3, 655380, 0, 3, 655381, 0, 3, 655382, 0, 7, 655383, 0, 3, 655384, 0, 5, 655385, 0, 7, 655386, 0, 5, 655387, 0, 2, 655388, 0, 0, 655401, 0, 0, 655402, 0, 5, 655403, 0, 4, 655404, 0, 0 )
 
-[node name="Enemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 894.26, 391.015 )
+with-fsm-but-still-no-enemies
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1275.89, 249.02 )
 
-[node name="Enemy2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 456.433, 246.852 )
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Enemy3" parent="." instance=ExtResource( 4 )]
+[node name="statestackdisplay" parent="Control" instance=ExtResource( 3 )]
+margin_left = 1165.42
+margin_top = 9.51367
+margin_right = 1375.42
+margin_bottom = 179.514
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 1080.2, 339.102 )
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 977.984, 94.8769 )
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource( 4 )]
 position = Vector2( 561.885, 358.979 )
 
-[node name="Enemy4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1627.09, 435.065 )
-
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1285.71, 297.341 )
+[node name="Enemy4" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 1414.72, 238.739 )

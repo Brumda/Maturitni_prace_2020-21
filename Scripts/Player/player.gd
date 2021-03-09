@@ -14,6 +14,9 @@ var is_attacking = false
 var is_jumping = false
 
 
+onready var animation = $Body/AnimationTree.get("parameters/playback")
+
+
 func _physics_process(_delta):
 		_handle_move_input()
 		#function move_and_slide is multiplied by delta by default
@@ -32,8 +35,9 @@ func _physics_process(_delta):
 		if is_jumping and velocity.y >=0:
 			is_jumping = false
 		
-		
-		_animation()
+
+		_assigned_animation()
+
 		
 		
 		if velocity.y > 1400:
@@ -43,18 +47,21 @@ func _physics_process(_delta):
 
 
 func _handle_move_input():
-	var move_direction = float(-int(Input.is_action_pressed("ui_left")) + int(Input.is_action_pressed("ui_right")))
+
+	var move_direction = float(-int(Input.is_action_pressed("move_left")) + int(Input.is_action_pressed("move_right")))
 	velocity.x = lerp(velocity.x, max_speed * move_direction, _get_friction())
 	if move_direction != 0:
-		$Collision.scale.x = move_direction
-		$Body.scale.x = move_direction
+		scale.x = move_direction
+
 
 
 func _input(event):
 	if event.is_action_pressed("jump") and is_on_floor():
 		velocity.y = max_jump_height
 		is_jumping = true
-	
+
+		animation.travel("jump")
+
 	if is_jumping == true:
 		snap = Vector2()
 
@@ -63,16 +70,19 @@ func _get_friction():
 	return 0.2 if is_on_floor() else 0.08
 
 
-func _animation():
-	var anim = "idle"
+
+func _assigned_animation():
+	var anim = "Idle"
 	
 	if !is_on_floor():
-		anim = "jump"
+		anim = "Jump"
+	
 	
 	elif abs(velocity.x) > Global.UNIT_SIZE:
-		anim = "run"
+		anim = "Move"
 	
-	$Body/Sprite.play(anim)
+	animation.travel(anim)
+
 
 
 func _on_Player_ready():
