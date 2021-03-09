@@ -10,6 +10,7 @@ var dead = 0.0
 func enter():
 #	Enemy is deciding if he is going to make it or not
 	f_u_note.text = "Ouch!"
+	
 	if owner.lives > dead:
 		animation.play("Hurt")
 	

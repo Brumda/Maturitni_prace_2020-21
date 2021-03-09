@@ -5,7 +5,6 @@ extends "res://Scripts/Player/States/Motion/Ground/on_ground.gd"
 onready var animation = owner.get_node("Body/AnimationPlayer/AnimationTree").get("parameters/playback")
 
 func enter():
-
 	animation.travel("Idle")
 
 func handle_input(event):
