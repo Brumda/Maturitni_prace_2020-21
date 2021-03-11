@@ -1,20 +1,21 @@
 extends KinematicBody2D
-class_name enemy
 
 
 export (int) var move_direction = 1
 
-export (float) var lives = 10.0
+export (float) var lives = 5.0
 
 
 var velocity = Vector2()
 
 func _ready() -> void:
+	Global.enemies_in_room += 1
+	
 	if Global.difficulty == "Easy":
-		lives *= 0.66
+		lives *= 0.75
 	
 	elif Global.difficulty == "Hard":
-		lives *= 1.33
+		lives *= 1.5
 	
 	
 func _physics_process(_delta):

@@ -30,7 +30,7 @@ func _on_Main_Menu_pressed():
 func _on_Restart_pressed():
 # warning-ignore:return_value_discarded
 	get_tree().reload_current_scene()
-	#If you restart, you will lose your progress
+
 	pause()
 
 

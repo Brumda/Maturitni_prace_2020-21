@@ -124,30 +124,30 @@ font_data = ExtResource( 95 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 17 ), ExtResource( 40 ), ExtResource( 24 ), ExtResource( 35 ), ExtResource( 39 ), ExtResource( 33 ), ExtResource( 47 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 11 ), ExtResource( 27 ), ExtResource( 41 ), ExtResource( 46 ), ExtResource( 14 ), ExtResource( 19 ), ExtResource( 8 ), ExtResource( 43 ), ExtResource( 29 ), ExtResource( 31 ), ExtResource( 45 ), ExtResource( 36 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 38 ) ],
+"frames": [ ExtResource( 52 ), ExtResource( 51 ), ExtResource( 48 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 20 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 50 ), ExtResource( 16 ), ExtResource( 22 ), ExtResource( 53 ), ExtResource( 103 ), ExtResource( 100 ), ExtResource( 49 ), ExtResource( 104 ), ExtResource( 101 ) ],
 "loop": true,
-"name": "Idle",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 66 ), ExtResource( 74 ), ExtResource( 92 ), ExtResource( 65 ), ExtResource( 71 ), ExtResource( 55 ), ExtResource( 63 ), ExtResource( 79 ), ExtResource( 70 ), ExtResource( 91 ), ExtResource( 59 ), ExtResource( 82 ) ],
-"loop": false,
-"name": "Attack",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 90 ), ExtResource( 78 ), ExtResource( 80 ), ExtResource( 58 ), ExtResource( 54 ), ExtResource( 72 ), ExtResource( 83 ), ExtResource( 88 ), ExtResource( 69 ), ExtResource( 87 ), ExtResource( 102 ), ExtResource( 105 ) ],
-"loop": false,
-"name": "Hurt",
-"speed": 15.0
+"name": "Move",
+"speed": 25.0
 }, {
 "frames": [ ExtResource( 28 ), ExtResource( 18 ), ExtResource( 34 ), ExtResource( 37 ), ExtResource( 25 ), ExtResource( 42 ), ExtResource( 44 ), ExtResource( 89 ), ExtResource( 9 ), ExtResource( 76 ), ExtResource( 84 ), ExtResource( 60 ) ],
 "loop": false,
 "name": "Jump",
 "speed": 25.0
 }, {
-"frames": [ ExtResource( 52 ), ExtResource( 51 ), ExtResource( 48 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 20 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 50 ), ExtResource( 16 ), ExtResource( 22 ), ExtResource( 53 ), ExtResource( 103 ), ExtResource( 100 ), ExtResource( 49 ), ExtResource( 104 ), ExtResource( 101 ) ],
+"frames": [ ExtResource( 66 ), ExtResource( 74 ), ExtResource( 92 ), ExtResource( 65 ), ExtResource( 71 ), ExtResource( 55 ), ExtResource( 63 ), ExtResource( 79 ), ExtResource( 70 ), ExtResource( 91 ), ExtResource( 59 ), ExtResource( 82 ) ],
+"loop": false,
+"name": "Attack",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 40 ), ExtResource( 24 ), ExtResource( 35 ), ExtResource( 39 ), ExtResource( 33 ), ExtResource( 47 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 11 ), ExtResource( 27 ), ExtResource( 41 ), ExtResource( 46 ), ExtResource( 14 ), ExtResource( 19 ), ExtResource( 8 ), ExtResource( 43 ), ExtResource( 29 ), ExtResource( 31 ), ExtResource( 45 ), ExtResource( 36 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 38 ) ],
 "loop": true,
-"name": "Move",
-"speed": 25.0
+"name": "Idle",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 90 ), ExtResource( 78 ), ExtResource( 80 ), ExtResource( 58 ), ExtResource( 54 ), ExtResource( 72 ), ExtResource( 83 ), ExtResource( 88 ), ExtResource( 69 ), ExtResource( 87 ), ExtResource( 102 ), ExtResource( 105 ) ],
+"loop": false,
+"name": "Hurt",
+"speed": 15.0
 }, {
 "frames": [ ExtResource( 67 ), ExtResource( 73 ), ExtResource( 64 ), ExtResource( 77 ), ExtResource( 75 ), ExtResource( 93 ), ExtResource( 68 ), ExtResource( 61 ), ExtResource( 85 ), ExtResource( 81 ), ExtResource( 62 ), ExtResource( 94 ), ExtResource( 86 ), ExtResource( 57 ), ExtResource( 56 ) ],
 "loop": false,
@@ -435,11 +435,10 @@ graph_offset = Vector2( 3, -21.6603 )
 extents = Vector2( 18.43, 34.7672 )
 
 [node name="Player" type="KinematicBody2D"]
-z_index = 1
+z_index = 2
 collision_mask = 14
 collision/safe_margin = 0.3
 script = ExtResource( 4 )
-lives = 4.0
 
 [node name="StateNameDisplayer" type="Label" parent="."]
 margin_left = -258.914
@@ -507,12 +506,12 @@ frame = 1
 
 [node name="Weapon" parent="Body" instance=ExtResource( 99 )]
 visible = false
+z_index = 5
 
 [node name="HitBox" type="Area2D" parent="Body"]
-visible = false
 position = Vector2( 0, 6 )
 collision_layer = 32
-collision_mask = 0
+collision_mask = 4
 
 [node name="Collision" type="CollisionShape2D" parent="Body/HitBox"]
 modulate = Color( 0.345098, 1, 0.0313726, 1 )
@@ -658,6 +657,7 @@ script = ExtResource( 96 )
 script = ExtResource( 107 )
 [connection signal="ready" from="." to="." method="_on_Player_ready"]
 [connection signal="attack_finished" from="Body/Weapon" to="StateMachine/Attack" method="_on_attack_finished"]
+[connection signal="area_entered" from="Body/HitBox" to="." method="_on_gem_collected"]
 [connection signal="body_entered" from="Body/Fighting_zone" to="StateMachine/Should_fight" method="_on_Fighting_zone_body_entered"]
 [connection signal="body_exited" from="Body/Fighting_zone" to="StateMachine/Should_fight" method="_on_Fighting_zone_body_exited"]
 [connection signal="animation_finished" from="Body/AnimationPlayer" to="StateMachine/Die" method="_on_animation_finished"]

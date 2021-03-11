@@ -4,11 +4,13 @@ extends KinematicBody2D
 signal direction_changed(new_direction)
 signal grounded_updated(is_grounded)
 
-export (float) var lives = 3.0
+export (float) var max_lives = 3.0
+var lives = max_lives
 
 var look_direction = 1 setget set_look_direction
 var is_grounded
 var velocity = Vector2()
+var more_health = false
 
 
 func _physics_process(_delta):
@@ -24,7 +26,7 @@ func _physics_process(_delta):
 	if velocity.y > 1400:
 #If the player is falling for too long, the game restarts the current level
 # warning-ignore:return_value_discarded
-			get_tree().reload_current_scene()
+		get_tree().reload_current_scene()
 
 
 func take_damage(amount):
@@ -38,6 +40,19 @@ func set_look_direction(value):
 
 
 func _on_Player_ready():
+	Global.gems_collected = 0
+	Global.kills = 0
+	Global.gems = 0
+	Global.enemies_in_room = 0
 	#You won't be able to see the mouse cursor in the game
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$Body/AnimationPlayer/AnimationTree.set_active(true)
+
+
+func _on_gem_collected(_area: Area2D) -> void:
+	if Global.gems == Global.gems_collected and !more_health:
+		max_lives += 1
+		lives += 1
+	
+	if lives < max_lives:
+		lives += 0.5
