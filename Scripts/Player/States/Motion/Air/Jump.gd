@@ -4,7 +4,7 @@ extends "res://Scripts/Player/States/Motion/motion.gd"
 
 onready var animation = owner.get_node("Body/AnimationPlayer/AnimationTree").get("parameters/playback")
 
-var max_jump_height = -10 * Global.UNIT_SIZE
+var max_jump_height = -11 * Global.UNIT_SIZE
 var velocity = Vector2()
 var is_jumping = false
 

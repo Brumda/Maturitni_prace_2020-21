@@ -112,15 +112,15 @@ animations = [ {
 "name": "Dead",
 "speed": 18.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 38 ), ExtResource( 26 ), ExtResource( 33 ), ExtResource( 50 ), ExtResource( 32 ), ExtResource( 23 ), ExtResource( 16 ), ExtResource( 54 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 42 ) ],
-"loop": true,
-"name": "Attacking",
-"speed": 22.0
-}, {
 "frames": [ ExtResource( 30 ), ExtResource( 80 ), ExtResource( 64 ), ExtResource( 44 ), ExtResource( 72 ), ExtResource( 66 ), ExtResource( 18 ), ExtResource( 56 ), ExtResource( 17 ), ExtResource( 77 ), ExtResource( 22 ), ExtResource( 78 ), ExtResource( 67 ), ExtResource( 70 ), ExtResource( 79 ), ExtResource( 29 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": false,
 "name": "Casting",
 "speed": 12.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 38 ), ExtResource( 26 ), ExtResource( 33 ), ExtResource( 50 ), ExtResource( 32 ), ExtResource( 23 ), ExtResource( 16 ), ExtResource( 54 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "Attacking",
+"speed": 22.0
 }, {
 "frames": [ ExtResource( 48 ), ExtResource( 39 ), ExtResource( 21 ), ExtResource( 45 ), ExtResource( 31 ), ExtResource( 47 ), ExtResource( 49 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 15 ), ExtResource( 63 ), ExtResource( 57 ) ],
 "loop": true,
@@ -341,10 +341,10 @@ radius = 20.3393
 height = 18.8741
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 194.053, 92.2289 )
+extents = Vector2( 218, 135.5 )
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 30.0932, 40.9054 )
+extents = Vector2( 30.5, 46 )
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 22.5, 34.9533 )
@@ -406,11 +406,10 @@ visible = false
 collision_layer = 0
 
 [node name="See_radius" type="CollisionShape2D" parent="Body/Player_Detector"]
-position = Vector2( 0, -69 )
 shape = SubResource( 9 )
 
 [node name="Attack_area" type="Area2D" parent="Body"]
-position = Vector2( 10, -15 )
+position = Vector2( 10, -6 )
 collision_layer = 0
 collision_mask = 33
 
@@ -484,9 +483,9 @@ uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="animation_finished" from="Body/AnimationPlayer" to="StateMachine/Hurt" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="Body/AnimationPlayer" to="StateMachine/Attack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Body/AnimationPlayer" to="StateMachine/Idle" method="_on_animation_finished"]
-[connection signal="animation_finished" from="Body/AnimationPlayer" to="StateMachine/Hurt" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="Body/Player_Detector" to="StateMachine/Sees_player" method="_on_player_entered"]
 [connection signal="body_entered" from="Body/Player_Detector" to="StateMachine/Chase" method="_on_Player_Detector_body_entered"]
 [connection signal="body_exited" from="Body/Player_Detector" to="StateMachine/Chase" method="_on_Player_Detector_body_exited"]

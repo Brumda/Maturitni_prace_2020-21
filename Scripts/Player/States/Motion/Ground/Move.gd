@@ -2,7 +2,7 @@ extends "res://Scripts/Player/States/Motion/Ground/on_ground.gd"
 
 
 
-var max_speed = 5 * Global.UNIT_SIZE
+var max_speed = 6 * Global.UNIT_SIZE
 var snap = Vector2(0, Global.UNIT_SIZE)
 onready var animation = owner.get_node("Body/AnimationPlayer/AnimationTree").get("parameters/playback")
 

@@ -24,6 +24,4 @@ func set_dead():
 
 func Mr_Stark_I_Dont_feel_so_good():
 	Global.kills += 1
-	print("You just killed " + str(Global.kills) + " enemies")
-	print("There is this much bad guys herer " + str(Global.enemies_in_room))
 	owner.queue_free()

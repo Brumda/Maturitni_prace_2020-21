@@ -15,7 +15,7 @@ var next_direction_time = 0
 var next_jump_time = -1
 
 var speed = 3 * Global.UNIT_SIZE
-var max_jump_height = -10 * Global.UNIT_SIZE
+var max_jump_height = -6 * Global.UNIT_SIZE
 
 
 
@@ -67,7 +67,7 @@ func follow_on_platform():
 
 
 func jumps_behind_you():
-	if OS.get_ticks_msec() > next_jump_time and next_jump_time != -1 and owner.is_on_floor():
+	if OS.get_ticks_msec() > next_jump_time and next_jump_time != -1 and owner.is_on_floor() or !GroundRayCast.is_colliding():
 		if player.position.y < owner.position.y - 20:
 			owner.velocity.y = max_jump_height
 		

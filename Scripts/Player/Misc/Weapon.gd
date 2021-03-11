@@ -36,16 +36,16 @@ func _change_state(new_state):
 	match new_state:
 		States.IDLE:
 			animation.stop()
-			visible = false
-			monitoring = false
-			monitorable = false
+			set_deferred("visible", false)
+			set_deferred("monitoring", false)
+			set_deferred("monitorable", false)
 		
 		States.ATTACK:
 			attack_current = combo[0]
 			animation.play(attack_current["animation"])
-			visible = true
-			monitorable = true
-			monitoring = true
+			set_deferred("visible", true)
+			set_deferred("monitoring", true)
+			set_deferred("monitorable", true)
 			
 	state = new_state
 
@@ -87,6 +87,9 @@ func _on_animation_finished(_anim_name):
 func _on_StateMachine_state_changed(current_state):
 	if current_state.name == "Attack":
 		attack()
+	
+	else:
+		_change_state(States.IDLE)
 
 
 func _on_enemy_hit(area: Area2D) -> void:

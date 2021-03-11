@@ -43,5 +43,5 @@ func _on_player_exited(_body: Node) -> void:
 
 
 func _input(event: InputEvent):
-	if event.is_action_pressed("Teleport") and can_teleport:
+	if event.is_action_pressed("teleport") and can_teleport:
 		transition()

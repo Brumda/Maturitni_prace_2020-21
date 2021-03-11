@@ -23,4 +23,3 @@ func _physics_process(_delta):
 
 func take_damage(amount):
 	$StateMachine/Got_hit.take_damage(amount)
-
