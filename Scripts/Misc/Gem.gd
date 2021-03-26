@@ -10,6 +10,8 @@ func _ready() -> void:
 
 func _on_player_entered(_body: Node) -> void:
 	Global.gems_collected += 1
+	set_deferred("monitoring", false)
+	set_deferred("monitorable", false)
 	animation.play("Fade_away")
 	yield(animation, "animation_finished")
 	queue_free()

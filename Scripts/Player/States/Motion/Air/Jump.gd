@@ -1,14 +1,12 @@
 extends "res://Scripts/Player/States/Motion/motion.gd"
 
 
-
-onready var animation = owner.get_node("Body/AnimationPlayer/AnimationTree").get("parameters/playback")
-
 var max_jump_height = -11 * Global.UNIT_SIZE
-var velocity = Vector2()
+var max_speed = 6 * Global.UNIT_SIZE
 var is_jumping = false
 
 func enter():
+	velocity = Vector2()
 	var input_direction = get_input_direction()
 	update_look_direction(input_direction)
 	
@@ -20,10 +18,10 @@ func update(_delta):
 	update_look_direction(input_direction)
 	
 	jump()
-	
-	if velocity.y <= 0:
+	velocity.x = input_direction * max_speed
+	if velocity.y == 0:
 		emit_signal("finished", "previous")
-
+	
 
 func jump():
 	if owner.is_on_floor():
@@ -33,4 +31,3 @@ func jump():
 	elif !owner.is_on_floor() and is_jumping:
 		owner.velocity.y = -0.4 * max_jump_height
 		is_jumping = false
-	

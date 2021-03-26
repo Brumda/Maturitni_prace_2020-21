@@ -2,13 +2,15 @@ extends Node2D
 
 
 onready var Health = $Health
-onready var Message = $Message
 
+var is_dead := false
 
 func _process(_delta: float) -> void:
-	Health.text = str(owner.lives)
-	
-
+	if !is_dead:
+		Health.text = str(owner.lives)
+	else:
+		Health.text = ""
 
 func _on_StateMachine_state_changed(current_state) -> void:
-	Message.text = current_state.get_name()
+	if current_state.name == "Die":
+		is_dead = true

@@ -1,16 +1,12 @@
 extends "res://Scripts/Statemachine/state_machine.gd"
 
 
-
 onready var idle = $Idle
 onready var move = $Move
 onready var jump = $Jump
 onready var attack = $Attack
-onready var fighting = $Fighting
 onready var hurt = $Hurt
 onready var die = $Die
-
-
 
 func _ready():
 	states_map = {
@@ -18,7 +14,6 @@ func _ready():
 		"move": move,
 		"jump": jump,
 		"attack": attack,
-		"fighting": fighting,
 		"hurt": hurt,
 		"die": die,
 	}
@@ -42,9 +37,7 @@ func _unhandled_input(event):
 		return
 	
 	if event.is_action_pressed("attack"):
-		if current_state.name in ["Attack", "Hurt", "Jump"] or !owner.is_on_floor() or owner.velocity.y < 0:
+		if current_state.name in ["Attack", "Hurt",
+		 ] or !owner.is_on_floor():
 			return
 		_change_state("attack")
-#		return
-#
-#	current_state.handle_input(event)

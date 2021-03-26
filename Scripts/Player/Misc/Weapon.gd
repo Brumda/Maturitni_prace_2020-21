@@ -1,17 +1,14 @@
 extends Area2D
 
 
-
 signal attack_finished
 
 onready var animation =  $AnimationPlayer
 
+
 var damage = 3
 enum States {IDLE, ATTACK}
 var state = null
-
-enum AttackInputStates { IDLE, LISTENING, REGISTERED }
-var attack_input_state = AttackInputStates.IDLE
 
 var ready_for_next_attack = false
 
@@ -30,7 +27,6 @@ func _ready():
 func _change_state(new_state):
 	match state:
 		States.ATTACK:
-			attack_input_state = AttackInputStates.LISTENING
 			ready_for_next_attack = false
 
 	match new_state:
@@ -46,24 +42,16 @@ func _change_state(new_state):
 			set_deferred("visible", true)
 			set_deferred("monitoring", true)
 			set_deferred("monitorable", true)
-			
+	
 	state = new_state
 
 
 func _unhandled_input(event):
 	if not state == States.ATTACK:
 		return
-		
-	if attack_input_state != AttackInputStates.LISTENING:
+
+	if event.is_action_pressed("attack") and !ready_for_next_attack:
 		return
-	
-	if event.is_action_pressed("attack"):
-		attack_input_state = AttackInputStates.REGISTERED
-
-
-func _physics_process(_delta):
-	if attack_input_state == AttackInputStates.REGISTERED and ready_for_next_attack:
-		attack()
 
 
 func attack():
@@ -74,12 +62,7 @@ func set_ready_for_next_attack():
 	ready_for_next_attack = true
 
 
-func set_attack_input_listening():
-	attack_input_state = AttackInputStates.LISTENING
-
-
 func _on_animation_finished(_anim_name):
-
 	_change_state(States.IDLE)
 	emit_signal("attack_finished")
 

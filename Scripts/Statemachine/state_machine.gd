@@ -13,15 +13,9 @@ var current_state = null
 var _active = false setget set_active
 
 func _ready() -> void:
-	if not start_state:
-		start_state = get_child(0).get_path()
-	
 	for child in get_children():
-		var err = child.connect("finished", self, "_change_state")
-		
-		if err:
-			printerr(err)
-	
+		child.connect("finished", self, "_change_state")
+
 	initialize(start_state)
 
 
@@ -67,8 +61,6 @@ func _on_animation_finished(anim_name):
 func _change_state(state_name):
 	if not _active:
 		return
-	
-#	current_state.exit()
 
 	if state_name == "previous":
 		states_stack.pop_front()
