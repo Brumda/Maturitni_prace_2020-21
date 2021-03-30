@@ -1,4 +1,4 @@
-[gd_scene load_steps=154 format=2]
+[gd_scene load_steps=157 format=2]
 
 [ext_resource path="res://Scripts/Player/Misc/Pivot.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Player/States/Motion/Air/Jump.gd" type="Script" id=2]
@@ -117,6 +117,9 @@
 [ext_resource path="res://Sound effects/basic_soundtrack.ogg" type="AudioStream" id=115]
 [ext_resource path="res://Sound effects/button_click.wav" type="AudioStream" id=116]
 [ext_resource path="res://Sound effects/footsteps.wav" type="AudioStream" id=117]
+[ext_resource path="res://img/Assets/life_bar.png" type="Texture" id=118]
+[ext_resource path="res://img/Assets/life_bar_over.png" type="Texture" id=119]
+[ext_resource path="res://img/Assets/life_bar_under.png" type="Texture" id=120]
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
@@ -142,40 +145,40 @@ font_data = ExtResource( 95 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ ExtResource( 17 ), ExtResource( 40 ), ExtResource( 24 ), ExtResource( 35 ), ExtResource( 39 ), ExtResource( 33 ), ExtResource( 47 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 11 ), ExtResource( 27 ), ExtResource( 41 ), ExtResource( 46 ), ExtResource( 14 ), ExtResource( 19 ), ExtResource( 8 ), ExtResource( 43 ), ExtResource( 29 ), ExtResource( 31 ), ExtResource( 45 ), ExtResource( 36 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 38 ) ],
+"frames": [ ExtResource( 52 ), ExtResource( 51 ), ExtResource( 48 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 20 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 50 ), ExtResource( 16 ), ExtResource( 22 ), ExtResource( 53 ), ExtResource( 103 ), ExtResource( 100 ), ExtResource( 49 ), ExtResource( 104 ), ExtResource( 101 ) ],
 "loop": true,
-"name": "Idle",
-"speed": 7.0
+"name": "Move",
+"speed": 25.0
 }, {
 "frames": [ ExtResource( 28 ), ExtResource( 18 ), ExtResource( 34 ), ExtResource( 37 ), ExtResource( 25 ), ExtResource( 42 ), ExtResource( 44 ), ExtResource( 89 ), ExtResource( 9 ), ExtResource( 76 ), ExtResource( 84 ), ExtResource( 60 ) ],
 "loop": false,
 "name": "Jump",
 "speed": 25.0
 }, {
-"frames": [ ExtResource( 66 ), ExtResource( 74 ), ExtResource( 92 ), ExtResource( 65 ), ExtResource( 71 ), ExtResource( 55 ), ExtResource( 63 ), ExtResource( 79 ), ExtResource( 70 ), ExtResource( 91 ), ExtResource( 59 ), ExtResource( 82 ) ],
-"loop": false,
-"name": "Attack",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 52 ), ExtResource( 51 ), ExtResource( 48 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 20 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 50 ), ExtResource( 16 ), ExtResource( 22 ), ExtResource( 53 ), ExtResource( 103 ), ExtResource( 100 ), ExtResource( 49 ), ExtResource( 104 ), ExtResource( 101 ) ],
+"frames": [ ExtResource( 42 ), ExtResource( 25 ), ExtResource( 37 ), ExtResource( 34 ), ExtResource( 18 ) ],
 "loop": true,
-"name": "Move",
-"speed": 25.0
-}, {
-"frames": [ ExtResource( 90 ), ExtResource( 78 ), ExtResource( 80 ), ExtResource( 58 ), ExtResource( 54 ), ExtResource( 72 ), ExtResource( 83 ), ExtResource( 88 ), ExtResource( 69 ), ExtResource( 87 ), ExtResource( 102 ), ExtResource( 105 ) ],
-"loop": false,
-"name": "Hurt",
-"speed": 15.0
+"name": "Fall",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 67 ), ExtResource( 73 ), ExtResource( 64 ), ExtResource( 77 ), ExtResource( 75 ), ExtResource( 93 ), ExtResource( 68 ), ExtResource( 61 ), ExtResource( 85 ), ExtResource( 81 ), ExtResource( 62 ), ExtResource( 94 ), ExtResource( 86 ), ExtResource( 57 ), ExtResource( 56 ) ],
 "loop": false,
 "name": "Dead",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 42 ), ExtResource( 25 ), ExtResource( 37 ), ExtResource( 34 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 90 ), ExtResource( 78 ), ExtResource( 80 ), ExtResource( 58 ), ExtResource( 54 ), ExtResource( 72 ), ExtResource( 83 ), ExtResource( 88 ), ExtResource( 69 ), ExtResource( 87 ), ExtResource( 102 ), ExtResource( 105 ) ],
+"loop": false,
+"name": "Hurt",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 40 ), ExtResource( 24 ), ExtResource( 35 ), ExtResource( 39 ), ExtResource( 33 ), ExtResource( 47 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 11 ), ExtResource( 27 ), ExtResource( 41 ), ExtResource( 46 ), ExtResource( 14 ), ExtResource( 19 ), ExtResource( 8 ), ExtResource( 43 ), ExtResource( 29 ), ExtResource( 31 ), ExtResource( 45 ), ExtResource( 36 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 38 ) ],
 "loop": true,
-"name": "Fall",
-"speed": 5.0
+"name": "Idle",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 66 ), ExtResource( 74 ), ExtResource( 92 ), ExtResource( 65 ), ExtResource( 71 ), ExtResource( 55 ), ExtResource( 63 ), ExtResource( 79 ), ExtResource( 70 ), ExtResource( 91 ), ExtResource( 59 ), ExtResource( 82 ) ],
+"loop": false,
+"name": "Attack",
+"speed": 20.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=8]
@@ -487,7 +490,7 @@ graph_offset = Vector2( 3, -21.6603 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=35]
 
 [sub_resource type="RectangleShape2D" id=36]
-extents = Vector2( 18.43, 34.7672 )
+extents = Vector2( 18.43, 32.7447 )
 
 [node name="Player" type="KinematicBody2D"]
 z_index = 3
@@ -499,10 +502,10 @@ script = ExtResource( 4 )
 layer = 100
 
 [node name="Health" type="Label" parent="UI"]
-margin_left = -8.0
-margin_top = 6.0
-margin_right = 67.0
-margin_bottom = 38.0
+margin_left = 7.50034
+margin_top = 27.0917
+margin_right = 82.5003
+margin_bottom = 59.0917
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
@@ -532,6 +535,22 @@ uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
+}
+
+[node name="Lifebar" type="TextureProgress" parent="UI"]
+margin_left = 109.299
+margin_top = 38.0
+margin_right = 481.299
+margin_bottom = 102.0
+value = 50.0
+rounded = true
+texture_under = ExtResource( 120 )
+texture_over = ExtResource( 119 )
+texture_progress = ExtResource( 118 )
+tint_under = Color( 1, 1, 1, 0.611765 )
+tint_over = Color( 1, 1, 1, 0.541176 )
+__meta__ = {
+"_edit_use_anchors_": false
 }
 
 [node name="Background" type="CanvasLayer" parent="."]
@@ -717,7 +736,7 @@ pause_mode = 2
 
 [node name="FootSteps" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource( 117 )
-volume_db = 5.0
+volume_db = 3.0
 
 [node name="Heal" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource( 113 )
@@ -725,6 +744,8 @@ stream = ExtResource( 113 )
 [node name="Death" type="AudioStreamPlayer2D" parent="SoundEffects"]
 pause_mode = 2
 stream = ExtResource( 106 )
+volume_db = 5.0
+max_distance = 1e+07
 
 [node name="ButtonCliks" type="AudioStreamPlayer2D" parent="SoundEffects"]
 pause_mode = 2
@@ -738,7 +759,7 @@ stream = ExtResource( 115 )
 [node name="Soundtrack_enemies" type="AudioStreamPlayer2D" parent="SoundEffects"]
 pause_mode = 1
 stream = ExtResource( 114 )
-volume_db = 4.0
+volume_db = 5.0
 
 [node name="Breakingleg" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource( 6 )

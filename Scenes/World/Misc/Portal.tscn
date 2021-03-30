@@ -6,6 +6,7 @@
 [ext_resource path="res://Sound effects/portal_humming.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
+size = 20
 font_data = ExtResource( 3 )
 
 [sub_resource type="Animation" id=2]
@@ -68,6 +69,7 @@ tracks/1/keys = {
 radius = 90.5611
 
 [node name="Portal" type="Area2D"]
+z_index = 2
 monitorable = false
 collision_layer = 0
 script = ExtResource( 2 )
@@ -111,7 +113,8 @@ __meta__ = {
 
 [node name="Humming" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
-volume_db = 10.0
+volume_db = 5.0
 max_distance = 1000.0
 [connection signal="body_entered" from="." to="." method="_on_player_entered"]
 [connection signal="body_exited" from="." to="." method="_on_player_exited"]
+[connection signal="tree_exiting" from="." to="." method="_on_Portal_tree_exiting"]
