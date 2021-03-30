@@ -24,6 +24,8 @@ func update(_delta):
 	
 
 func jump():
+#	If the player is on the floor he will jump
+#	if he's in the air, he will be launched back to the ground
 	if owner.is_on_floor():
 		is_jumping = true
 		owner.velocity.y = max_jump_height

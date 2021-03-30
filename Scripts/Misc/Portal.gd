@@ -8,15 +8,19 @@ onready var hum = $Humming
 export var next_scene : PackedScene
 var can_teleport
 var teleported
+var player_gone
 
 func _process(_delta: float) -> void:
-	if Global.kills == Global.enemies_in_room and !teleported and !can_teleport and !Global.player_is_dead:
+#	Activates the portal
+	if (Global.kills == Global.enemies_in_room and !teleported
+	 and !can_teleport and !Global.player_is_dead):
 		can_teleport = true
 		hum.play()
 		animation.play("Spin_me_right_round_baby")
 
 
 func transition():
+#	Teleports player into next level after black screen fade out
 	can_teleport = false
 	animation.play("TransitionFading")
 	yield(animation, "animation_finished")
@@ -26,6 +30,7 @@ func transition():
 
 
 func _on_player_entered(_body: Node) -> void:
+#	Hints based on the player's progress
 	if can_teleport and Global.gems_collected == Global.gems:
 		hint.text = "Press X to teleport into the next level"
 	
@@ -37,12 +42,19 @@ func _on_player_entered(_body: Node) -> void:
 
 
 func _on_player_exited(_body: Node) -> void:
-	yield(get_tree().create_timer(3), "timeout")
+	if player_gone:
+		return
+	yield(get_tree().create_timer(4), "timeout")
 	if hint.text:
 		hint.text = ""
 
 
 func _unhandled_input(event: InputEvent) -> void:
+#	Waiting until the player wants to teleport
 	if event.is_action_pressed("teleport") and can_teleport:
 		teleported = true
 		transition()
+
+
+func _on_Portal_tree_exiting() -> void:
+	player_gone = true

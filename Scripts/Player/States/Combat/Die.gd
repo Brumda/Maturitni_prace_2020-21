@@ -9,6 +9,7 @@ onready var steps = owner.get_node("SoundEffects/FootSteps")
 onready var death_sound =  owner.get_node("SoundEffects/Death")
 
 func enter():
+#	Stops the sounds, disables the hitbox
 	soundtrack_enemies.stop()
 	soundtrack.stop()
 	steps.stop()
@@ -20,6 +21,7 @@ func enter():
 
 
 func _on_animation_finished(anim_name):
+#	Starts up the death screen
 	if anim_name == "Dying" and Global.player_is_dead:
 		Global.player_is_dead = false
 		dead.death_screen()

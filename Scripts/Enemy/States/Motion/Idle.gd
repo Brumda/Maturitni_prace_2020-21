@@ -11,5 +11,6 @@ func enter():
 
 
 func _on_animation_finished(anim_name: String) -> void:
+#	Waits until the animation finishes and begins to patrol again
 	if anim_name == "Idle":
 		emit_signal("finished", "patrol")

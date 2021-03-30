@@ -18,6 +18,7 @@ var max_jump_height = -6 * Global.UNIT_SIZE
 
 func enter():
 	f_u_note.text = "Sir! Let me tell you about Raid shadow legends!"
+#	Difficulty adjustments
 	if Global.difficulty == "Easy":
 		reaction_time *= 1.33
 	
@@ -28,6 +29,7 @@ func enter():
 	
 
 func set_direction(target_direction):
+#	Seeks the player and turns towards him
 	if owner.move_direction != target_direction:
 		owner.move_direction = target_direction
 		
@@ -41,11 +43,14 @@ func set_direction(target_direction):
 func update(_delta):
 	owner.velocity = owner.move_and_slide(owner.velocity, Global.UP)
 	follow_on_platform()
+#	Enemies will follow the player onto another platform only on the hard
+#	difficulty
 	if Global.difficulty == "Hard":
 		jumps_after_you()
 
 
 func follow_on_platform():
+#	Adjusts move direction based on the player's position
 	if player.position.x < owner.position.x:
 		set_direction(-1)
 	
@@ -59,11 +64,15 @@ func follow_on_platform():
 		if !GroundRayCast.is_colliding() or WallRayCast.is_colliding():
 			emit_signal("finished", "idle")
 	
-	owner.velocity.x = lerp(owner.velocity.x, speed * direction, .3)
+	owner.velocity.x = lerp(owner.velocity.x, speed * direction, 0.3)
 
 
 func jumps_after_you():
-	if OS.get_ticks_msec() > next_jump_time and next_jump_time != -1 and owner.is_on_floor() or !GroundRayCast.is_colliding():
+#	Checks before jumping sveral times
+#	Otherwise, the enemy would jump at inappropriate times, because he thought
+#	it was a good idea 5 secons ago
+	if ((OS.get_ticks_msec() > next_jump_time and next_jump_time != -1 
+	and owner.is_on_floor()) or !GroundRayCast.is_colliding()):
 		if player.position.y < owner.position.y - 20:
 			owner.velocity.y = max_jump_height
 		

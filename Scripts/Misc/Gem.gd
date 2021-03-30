@@ -9,6 +9,7 @@ func _ready() -> void:
 
 
 func _on_player_entered(_body: Node) -> void:
+#	Adds the gem to the player's purse and makes it disappear
 	Global.gems_collected += 1
 	set_deferred("monitoring", false)
 	set_deferred("monitorable", false)

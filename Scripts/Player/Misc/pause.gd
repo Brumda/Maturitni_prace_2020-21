@@ -35,7 +35,7 @@ func _on_Main_Menu_pressed():
 	yield(click, "finished")
 	if !dead:
 		pause()
-	Global.max_lives = 3.0
+	Global.max_lives = 30
 	Global.more_health = false
 	Global.restart = false
 # warning-ignore:return_value_discarded
@@ -64,6 +64,7 @@ func _on_Pause_hide():
 
 
 func death_screen():
+#	Changes pause menu into the death menu
 	dead = true
 	$VBoxContainer/Resume.disabled = true
 	$VBoxContainer/Resume.visible = false

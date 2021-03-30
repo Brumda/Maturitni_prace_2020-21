@@ -10,9 +10,10 @@ func _on_Control_ready():
 
 
 func _on_MainMenu_pressed():
+#	Restarts game progress
 	click.play()
 	yield(click, "finished")
-	Global.max_lives = 3.0
+	Global.max_lives = 30
 	Global.more_health = false
 	Global.restart = false
 # warning-ignore:return_value_discarded

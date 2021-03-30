@@ -18,6 +18,8 @@ func enter() -> void:
 
 
 func update(_delta):
+#	The enemy patrols a platform, when he encounters  an edge or a wall
+#	he will turn around
 	owner.velocity = owner.move_and_slide(owner.velocity, Global.UP)
 	owner.velocity.x = lerp(owner.velocity.x, speed * owner.move_direction, .5)
 	

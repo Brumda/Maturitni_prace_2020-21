@@ -22,6 +22,8 @@ func _ready():
 
 
 func _change_state(state_name):
+#	States which use pushdown automaton instead of the basic state machine
+#	are listed here 
 	if not _active:
 		return
 	

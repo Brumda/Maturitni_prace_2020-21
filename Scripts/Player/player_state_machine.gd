@@ -20,6 +20,8 @@ func _ready():
 
 
 func _change_state(state_name):
+#	Defines which states use pushdown automaton instead of basic state machine
+#	When player dies, the state machine shuts down
 	if not _active:
 		return
 	
@@ -33,11 +35,12 @@ func _change_state(state_name):
 
 
 func _unhandled_input(event):
+#	Additional conditions for attacking
 	if not _active:
 		return
 	
 	if event.is_action_pressed("attack"):
-		if current_state.name in ["Attack", "Hurt",
-		 ] or !owner.is_on_floor():
+		if current_state.name in ["Attack", "Hurt", "Jump"
+		 ] or floor(owner.velocity.y) != 18:
 			return
 		_change_state("attack")

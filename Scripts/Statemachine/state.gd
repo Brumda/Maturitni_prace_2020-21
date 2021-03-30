@@ -1,6 +1,7 @@
 extends Node
 
-
+#	Basic template for all the states
+#	Forces state to have this signal and those functions 
 # warning-ignore:unused_signal
 signal finished(next_state_name)
 

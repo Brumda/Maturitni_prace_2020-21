@@ -18,15 +18,17 @@ func _process(_delta: float) -> void:
 func _on_Play_pressed():
 	click.play()
 	yield(click, "finished")
+#	Loads first level when clicked on
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Scenes/World/Lvl_01.tscn")
 
 
 func _on_Difficulty_pressed() -> void:
+#	Toggles difficulty popup menu
 	click.play()
 	popup_menu.visible = not popup_menu.visible
 
-
+#	Difficulty changing buttons
 func _on_Easy_pressed() -> void:
 	click.play()
 	Global.difficulty = "Easy"

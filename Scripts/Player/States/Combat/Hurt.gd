@@ -8,6 +8,7 @@ onready var pain_sound = owner.get_node("SoundEffects/Pain")
 var dead = 0.0
 
 func enter():
+#	Decides if the player is dead or just hurt
 	pain_sound.play()
 	hitbox.set_deferred("monitorable", false)
 	if owner.lives > dead:

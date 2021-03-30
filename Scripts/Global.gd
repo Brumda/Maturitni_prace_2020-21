@@ -18,7 +18,7 @@ var kills := 0
 var gems := 0
 var gems_collected := 0
 
-var max_lives = 3.0
+var max_lives = 30
 var more_health := false
 var restart := false
 var player_is_dead := false
