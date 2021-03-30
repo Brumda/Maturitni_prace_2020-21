@@ -109,15 +109,15 @@ font_data = ExtResource( 86 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 5 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 4 ) ],
-"loop": false,
-"name": "Idle",
-"speed": 6.0
-}, {
 "frames": [ ExtResource( 96 ), ExtResource( 92 ), ExtResource( 93 ), ExtResource( 94 ), ExtResource( 91 ), ExtResource( 95 ), ExtResource( 97 ), ExtResource( 98 ), ExtResource( 88 ), ExtResource( 99 ), ExtResource( 89 ), ExtResource( 90 ) ],
 "loop": false,
 "name": "Hurt",
 "speed": 22.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 5 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "Idle",
+"speed": 6.0
 }, {
 "frames": [ ExtResource( 68 ), ExtResource( 40 ), ExtResource( 55 ), ExtResource( 20 ), ExtResource( 46 ), ExtResource( 76 ), ExtResource( 71 ), ExtResource( 59 ), ExtResource( 61 ), ExtResource( 58 ), ExtResource( 75 ), ExtResource( 53 ), ExtResource( 28 ), ExtResource( 41 ), ExtResource( 24 ) ],
 "loop": true,
@@ -413,7 +413,7 @@ height = 18.8741
 extents = Vector2( 237.713, 147.354 )
 
 [sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 30.5, 46 )
+extents = Vector2( 30.5, 36.8385 )
 
 [sub_resource type="CapsuleShape2D" id=13]
 radius = 20.4432
@@ -503,12 +503,12 @@ collision_layer = 0
 shape = SubResource( 11 )
 
 [node name="Attack_area" type="Area2D" parent="Body"]
-visible = false
-position = Vector2( 10, -6 )
+position = Vector2( 10, -10 )
 collision_layer = 0
 collision_mask = 33
 
 [node name="Damage_zone" type="CollisionShape2D" parent="Body/Attack_area"]
+position = Vector2( 0, -6.60712 )
 shape = SubResource( 12 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -559,9 +559,9 @@ stream = ExtResource( 62 )
 
 [node name="Death" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource( 60 )
-[connection signal="animation_finished" from="Body/AnimationPlayer" to="StateMachine/Attack" method="_on_animation_finished"]
-[connection signal="animation_finished" from="Body/AnimationPlayer" to="StateMachine/Idle" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Body/AnimationPlayer" to="StateMachine/Hurt" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="Body/AnimationPlayer" to="StateMachine/Idle" method="_on_animation_finished"]
+[connection signal="animation_finished" from="Body/AnimationPlayer" to="StateMachine/Attack" method="_on_animation_finished"]
 [connection signal="body_entered" from="Body/Player_Detector" to="StateMachine/Sees_player" method="_on_player_entered"]
 [connection signal="body_entered" from="Body/Player_Detector" to="StateMachine/Chase" method="_on_Player_Detector_body_entered"]
 [connection signal="body_exited" from="Body/Player_Detector" to="StateMachine/Chase" method="_on_Player_Detector_body_exited"]
